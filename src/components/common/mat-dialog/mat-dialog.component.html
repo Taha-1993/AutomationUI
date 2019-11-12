@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>{{ dialogModel.dialogTitle }}</h2>
+
+<mat-dialog-content>
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col">
+      <span class="mLeft20" [innerHtml]="dialogModel.dialogMessage | safeHTML"></span>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="mLeft20 mat-dialog-actions">
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--6-col">
+      <button mat-raised-button style="width: 100%" [mat-dialog-close]="dialogModel.firstButtonTitle">{{ dialogModel.firstButtonTitle }}</button>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col">
+      <button *ngIf="dialogModel.secondButtonTitle" mat-raised-button clear style="width: 100%" [mat-dialog-close]="dialogModel.secondButtonTitle">{{ dialogModel.secondButtonTitle }}</button>
+    </div>
+  </div>
+</mat-dialog-actions>

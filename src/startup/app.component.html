@@ -1,0 +1,23 @@
+<app-header (onMenuClick)="sidenav.toggle()" [componentTitle]="selectedRouteTitle"></app-header>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" class="sideNavTheme">
+    <mat-nav-list>
+      <a mat-list-item routerLink="judicature" (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon><img src="./assets/images/poolmanagement-icon.png" style="height: 19px; width: 19px; margin-top: -16px;" /></mat-icon>
+        Historical Results
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="contentTheme">
+    <div class="content-wrapper poolpage-height">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div #mainDiv id="mainDiv" class="center loading" [style.display]="loading | showOverlay">
+  <mat-spinner style="z-index: 1;"></mat-spinner>
+  <div class="center-text">{{progress}}</div>
+</div>

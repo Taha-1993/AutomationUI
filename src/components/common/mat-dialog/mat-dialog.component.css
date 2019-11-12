@@ -1,0 +1,26 @@
+.mat-confirm-dialog-size {
+    min-width: 234px;
+    min-height: 150px;
+    display: block;
+    padding: 25px 25px 10px 25px;
+}
+
+mat-dialog-actions button {
+    float: right;
+    padding: 0px;
+    min-width: 40px;
+    text-transform: uppercase;
+    color: #253c98;
+    font-weight: 600;
+}
+
+.mat-dialog-actions {
+  display: block !important;
+  margin-bottom: -12px !important;
+}
+
+/* @media (min-width: 1300px) and (max-width: 1600px) {
+    .mLeft20 {
+        margin-left: 20px !important;
+    }
+} */

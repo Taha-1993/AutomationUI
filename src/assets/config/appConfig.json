@@ -1,0 +1,9 @@
+{
+  "production": false,
+  "applicationName":"Web Automation Portal",
+  "currentEnvironment": "QA",
+  "API": "http://localhost:19289/api",
+  "OktaIssuer": "https://dev-805228.oktapreview.com/oauth2/default",
+  "OktaRedirectUri": "http://localhost:4200/implicit/callback",
+  "OktaClientId": "0oafklmzylGieQ8S10h7"
+}

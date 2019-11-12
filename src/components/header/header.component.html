@@ -1,0 +1,40 @@
+<mat-toolbar color="white">
+  <mat-toolbar-row>
+    <div class="logowrapper">
+      <img width="164" height="44" alt="logo" src="./assets/transre-truma-logo.png" />
+    </div>
+    <span class="toolbar-spacer"></span>
+    <div class="toprightuser">
+      <!-- <button mat-icon-button>
+        <mat-icon title="Notifications"><img src="./assets/notification-icon.png" class="valigntop" /></mat-icon>
+      </button> -->
+      <!-- <button mat-icon-button [matMenuTriggerFor]="menu1">
+        <mat-icon title="Applications"><img src="./assets/app-icon.png" class="valigntop" /></mat-icon>
+      </button> -->
+      <mat-menu #menu1="matMenu" class="appchooser">
+        <div class="triangle"></div>
+        <div class="appmenu-container">
+        </div>
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon><img src="./assets/user-icon.png" class="valigntop" /></mat-icon>
+        <span style="font-weight: bold; font-size: 13px;">{{username}}</span>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item disabled><i><img src="./assets/images/settings-icon.png"
+              class="mR10" /></i>Settings</button>
+        <button mat-menu-item [disabled]="!isAuthenticated" (click)="logout()"><i><img
+              src="./assets/images/logout-icon.png" class="mR10" /></i>Logout</button>
+      </mat-menu>
+    </div>
+    <mat-icon class="toolbar-icon mT5" (click)="menuClick()">menu</mat-icon>
+    <span
+      class="app-title mT5"><strong>{{applicationName}}<span>{{currentEnvironment}}</span></strong>{{componentTitle}}</span>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-toolbar [ngClass]="{'toolbar-area': true, 'toolbar-area-selected': false }" class="bluetoolbar">
+  <mat-toolbar-row>
+    <span class="toolbar-spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>

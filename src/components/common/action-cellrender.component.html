@@ -1,0 +1,37 @@
+<div class="grid-actions gridhover" *ngIf="data !== null" #actions id="{{'grid_actions_'+data.FileHistoryId}}"
+  [ngStyle]="{ 'top' : getPositionTop(actions.id),'left':getPositionLeft('DataloadServicingFiles') , 'position' : 'fixed' }">
+  <i title="Delete" data-action-type="delete" class="material-icons PoolsHeadingLink cursor-pointer delete-icon"
+    [ngStyle]="{'display': (data.IsFileDeletable && isEditor) ? 'block' : 'None'}">
+
+  </i>
+
+  <i title="Edit" data-action-type="edit" class="material-icons PoolsHeadingLink cursor-pointer edit-icon" [ngStyle]="{'display': isEditor && data.FileName === 'UserEntry' && data.DataType === 'Trustee' && (data.Status === -1 || data.Status === 2) ? 'block' : 'None'}">
+
+  </i>
+
+  <i title="View" data-action-type="view" class="grid-icon material-icons PoolsHeadingLink cursor-pointer"
+    [ngStyle]="{'display': (data.DataType === 'Trustee' && (data.Status === -1 || data.Status === 0 || data.Status === 2)) ? 'block' : 'None'}">
+    visibility
+  </i>
+
+  <i title="View Details" data-action-type="detail" class="grid-icon material-icons PoolsHeadingLink cursor-pointer"
+    [ngStyle]="{'display': (data.Status === 3 || data.NoOfPools <= 1 || data.DataType === 'Trustee') || (!isEditor && !viewOnly) ? 'None' : 'block'}">
+    assignment
+  </i>
+  <i title="View Exceptions" data-action-type="exception" class="grid-icon material-icons PoolsHeadingLink cursor-pointer"
+    [ngStyle]="{'display':((data.Status !== 4 && data.Status !== 3) ||data.FileSubType === 'Pool') && (!isEditor || !viewOnly) ? 'None' : 'block'}">
+    info
+  </i>
+  <i title="View Summary" data-action-type="summary" class="grid-icon material-icons PoolsHeadingLink cursor-pointer"
+    [ngStyle]="{'display':(data.Status === 2 || data.Status === 4) && data.DataType === 'Pricing' && (isEditor || viewOnly) ? 'block' : 'none'}">
+    assignment
+  </i>
+  <i title="Copy To Final" data-action-type="copy" class="grid-icon material-icons PoolsHeadingLink cursor-pointer"
+    [ngStyle]="{'display':data.CopyToFinal && (isEditor || viewOnly)? 'block' : 'none'}">
+    file_copy
+  </i>
+  <i title="View Exclusions" data-action-type="exclusions" class="grid-icon material-icons PoolsHeadingLink cursor-pointer"
+    [ngStyle]="{'display':data.Status === 5 && (data.DataType === 'Origination' || data.DataType === 'Submission' || data.DataType === 'Servicing') ? 'block' : 'none'}">
+    warning
+  </i>
+</div>

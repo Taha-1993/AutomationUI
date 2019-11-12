@@ -1,0 +1,108 @@
+.contentTheme {
+  background-color: white;
+  height: auto;
+}
+
+/* .sideNavTheme {
+  width: 180px;
+  background-color: #101011;
+  background-color: #f5f5f5;
+  padding-top: 10px;
+} */
+
+.navItems {
+  text-align: center;
+  /*color: white;*/
+}
+
+app-header {
+  min-height: 83px;
+  background: #ffffff;
+  z-index: 2000;
+}
+
+.loading {
+  position: fixed;
+  z-index: 5001;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.loading::after {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.loading:not(:required) {
+  font: 0/0 a;
+  font-size: 70px;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.loading:not(:required):before {
+  content: '';
+  display: none;
+  margin-left: 45%;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+center {
+  text-align: center;
+  height: inherit;
+  margin-top: 20%;
+}
+
+.center-text {
+  position: relative;
+  top: -50px;
+  left: 32px;
+  font-size: 20px;
+  color: #3f51b5;
+  font-weight: bold;
+  z-index: 1;
+}
+
+::ng-deep .custom-class .mat-simple-snackbar {
+  font-size: 26px;
+  background: #326295;
+}
+
+::ng-deep .mat-snack-bar-container {
+  background: #326295;
+}
+
+
+.links_sidenav_2 span{
+  background: #ddd;
+  border-radius: 50%;
+  height: 34px;
+  width: 34px;
+  display: inline-block;
+  text-align: center;
+  line-height: 34px;
+  margin-right: 5px;
+}
+
+.links_sidenav_2 span img{
+  max-width: 80%;
+}

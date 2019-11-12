@@ -1,0 +1,39 @@
+.tp-hidden {
+  display: none;
+}
+
+.hyperlink {
+  color: #213994;
+  margin-top: -7px;
+}
+
+.clslastPricingType {
+  display: block;
+}
+
+.clslastNonPricingType {
+  display: none;
+}
+
+.dropdown-trigger {
+  padding: 0em !important;
+  float: left;
+}
+
+.mR5 {
+  margin-right: 5px;
+}
+
+.dealstructurecard {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  height: 100%;
+  background: #fff;
+  box-shadow: 1px 1px 4px #999;
+  float: left;
+}
+
+pool-grid{
+  float: left;
+}
