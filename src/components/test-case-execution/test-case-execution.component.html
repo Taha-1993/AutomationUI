@@ -1,0 +1,8 @@
+<mat-tab-group [@.disabled]="true" (selectedIndexChange)="selectedTabIndex=$event">
+  <mat-tab label="Execution">
+    <test-case-consolidated-results *ngIf="selectedTabIndex===0"></test-case-consolidated-results>
+  </mat-tab>
+  <mat-tab label="Results">
+    <test-case-historical-results *ngIf="selectedTabIndex===1"></test-case-historical-results>
+  </mat-tab>
+</mat-tab-group>

@@ -30,17 +30,17 @@ import {
 import {
   ErrorPageComponent,
   MatDialogComponent,
-  JudicatureComponent,
-  HomeComponent
+  TestCaseExecutionComponent,
+  TestCaseConsolidatedResultsComponent,
+  TestCaseHistoricalResultsComponent
 } from '../components';
 import {
   AppLoadService,
   MatDialogService,
-  JudicatureService,
   ExecutionService
 } from '../services';
 import {
-  JudicatureEffects
+  TestCaseExecutionEffects
 } from '../ngrx-store/effects';
 import { KeyValuePipe } from '../pipes/object-keys.pipe';
 import { AngularResizedEventModule } from 'angular-resize-event';
@@ -65,8 +65,9 @@ export function get_settings(appLoadService: AppLoadService) {
     ErrorPageComponent,
     AppComponent,
     HeaderComponent,
-    JudicatureComponent,
-    HomeComponent
+    TestCaseExecutionComponent,
+    TestCaseConsolidatedResultsComponent,
+    TestCaseHistoricalResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +82,7 @@ export function get_settings(appLoadService: AppLoadService) {
     AngularResizedEventModule,
     StoreModule.forRoot({ reducer }, { metaReducers }),
     EffectsModule.forRoot([
-      JudicatureEffects
+      TestCaseExecutionEffects
     ]),
     AgGridModule.withComponents([
       // ActionCellRenderComponent,
@@ -119,8 +120,7 @@ export function get_settings(appLoadService: AppLoadService) {
     CanDeactivateGuard,
     AppLoadService,
     MatDialogService,
-    KeyValuePipe,
-    JudicatureService
+    KeyValuePipe
   ],
   entryComponents: [
     // ActionCellRenderComponent,

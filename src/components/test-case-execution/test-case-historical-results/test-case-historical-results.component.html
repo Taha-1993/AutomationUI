@@ -1,0 +1,14 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--12-col">
+    <ag-grid-angular class="ag-theme-material" style="width: 100% !important; height: 500px"
+      [rowHeight]="38"
+      [columnDefs]="columnDefs"
+      [gridOptions]="gridOptions"
+      [rowData]="rowData"
+      [animateRows]="true"
+      (rowClicked)="onRowClicked($event)"
+      (gridReady)="onGridReady($event)"
+      (gridSizeChanged)="onGridSizeChanged($event)">
+    </ag-grid-angular>
+  </div>
+</div>

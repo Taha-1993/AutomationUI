@@ -32,12 +32,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.store.select(reducers.getAjaxCallsInProgress).pipe(takeUntil(this.ngUnsubscribe))
-    //   .subscribe(loading => {
-    //     this._ngZone.run(() => {
-    //       this.loading = loading;
-    //     });
-    //   });
+    this.store.select(reducers.getAjaxCallsInProgress).pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(loading => {
+        this._ngZone.run(() => {
+          this.loading = loading;
+        });
+      });
 
     this.router.events.pipe(takeUntil(this.ngUnsubscribe)).subscribe(x => of(x).pipe(
       tap(() => this.selectedRouteTitle = ''),

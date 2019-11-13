@@ -3,6 +3,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'checkbox-cell',
   templateUrl: './ag-grid-material-checkbox-editor.component.html'
 })

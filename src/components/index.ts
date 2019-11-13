@@ -1,5 +1,6 @@
 
 export * from './common/mat-dialog/mat-dialog.component';
 export * from './error-page/error-page.component';
-export * from './judicature/judicature.component';
-export * from './home/home.component';
+export * from './test-case-execution/test-case-execution.component';
+export * from './test-case-execution/test-case-consolidated-results/test-case-consolidated-results.component';
+export * from './test-case-execution/test-case-historical-results/test-case-historical-results.component';

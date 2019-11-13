@@ -6,24 +6,22 @@ import { PageRefreshGuard, CanDeactivateGuard } from '../../guards';
 import * as constants from '../../constants/left-menu';
 import {
   ErrorPageComponent,
-  JudicatureComponent,
-  HomeComponent
+  TestCaseExecutionComponent
 } from '../../components';
 
 const routes: Routes = [
   { path: 'implicit/callback', component: OktaCallbackComponent },
   { path: 'login', component: OktaLoginRedirectComponent },
-  { path: constants.JUDICATURE_ROUTE, component: JudicatureComponent, canActivate: [OktaAuthGuard], data: { title: constants.JUDICATURE } },
-  { path: constants.HOME, component: HomeComponent },
+  { path: constants.TEST_CASE_EXECUTION_ROUTE, component: TestCaseExecutionComponent, canActivate: [OktaAuthGuard], data: { title: constants.TEST_CASE_EXECUTION } },
   { path: 'error-page', component: ErrorPageComponent, canActivate: [PageRefreshGuard] },
   {
     path: '',
-    redirectTo: `/${constants.HOME}`,
+    redirectTo: `/${constants.TEST_CASE_EXECUTION_ROUTE}`,
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: `/${constants.HOME}`
+    redirectTo: `/${constants.TEST_CASE_EXECUTION_ROUTE}`
   }
 ];
 
