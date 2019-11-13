@@ -4,6 +4,11 @@ import { dateTimeFormatter } from '../../../utils';
 export const getExecutionColumnDefinition = () => {
   const columnDefs: ColDef[] = [
     {
+      headerName: 'Execution #',
+      field: 'RunID',
+      cellStyle: { 'text-align': 'center' }
+    },
+    {
       headerName: 'Project ID',
       field: 'ProjectID',
       hide: true,
@@ -30,7 +35,7 @@ export const getExecutionColumnDefinition = () => {
     {
       headerName: 'Suite Type Description',
       field: 'SuiteTypeDescription',
-      enableRowGroup: true,
+      hide: true,
       cellStyle: { 'text-align': 'center' }
     },
     {
