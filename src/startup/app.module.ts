@@ -112,7 +112,7 @@ export function get_settings(appLoadService: AppLoadService) {
       provide: ErrorHandler,
       useClass: CustomErrorHandler
     },
-    { provide: APP_BASE_HREF, useValue: '/VIP/' },
+    { provide: APP_BASE_HREF, useValue: '/QAAutomation/' },
     OktaAuthService,
     OktaAuthGuard,
     Title,
