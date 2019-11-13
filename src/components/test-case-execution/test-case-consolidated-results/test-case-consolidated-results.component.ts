@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs/Subject';
+import { Subject, interval } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GridApi, ColumnApi, GridReadyEvent, ColDef, GridOptions } from 'ag-grid';
 
@@ -39,6 +39,12 @@ export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy {
     this.store.select(reducers.getTestSuiteDetailsState).pipe(takeUntil(this.ngUnsubscribe)).subscribe(x => {
       this.rowData = x;
     });
+
+    interval(10000).pipe(takeUntil(this.ngUnsubscribe)).subscribe(z => {
+      this.oktaAuth.getUser().then(x => {
+        this.store.dispatch(new actions.GetTestSuiteDetailsAction(_.first(x.email.split('@'))));
+      });
+    });
   }
 
   ngOnDestroy(): void {
@@ -64,6 +70,7 @@ export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy {
       if (actionType === 'execute') {
         this.oktaAuth.getUser().then(x => {
           this.executionService.executeTestSuite(e.data.ProjectName, e.data.SuiteTypeName, _.first(x.email.split('@')));
+          this.store.dispatch(new actions.GetTestSuiteDetailsAction(_.first(x.email.split('@'))));
         });
       }
     }
