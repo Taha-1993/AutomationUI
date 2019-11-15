@@ -35,3 +35,4 @@ export const getErrorHandlerObjectState = createSelector(getErrorHandlerState, e
 
 export const getTestSuiteDetailsState = createSelector(getTestCaseExecutionState, testCaseExecutionReducer.getTestSuiteDetailsState);
 export const getTestSuiteResultsState = createSelector(getTestCaseExecutionState, testCaseExecutionReducer.getTestSuiteResultsState);
+export const getTestScenarioResultsState = createSelector(getTestCaseExecutionState, testCaseExecutionReducer.getTestScenarioResultsState);

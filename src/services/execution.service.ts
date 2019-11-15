@@ -17,6 +17,10 @@ export class ExecutionService {
     return this.http.get(`${Config.API}/TestCaseExecution/GetTestSuiteResults`);
   }
 
+  getTestScenarioResults(suiteExecutionID: number): Observable<any> {
+    return this.http.get(`${Config.API}/TestCaseExecution/GetTestScenarioResults?suiteExecutionID=${suiteExecutionID}`);
+  }
+
   executeTestSuite(projectName: string, suiteName: string, username: string) {
     return this.http.get(`${Config.API}/TestCaseExecution/ExecuteTestSuite?projectName=${projectName}&suiteName=${suiteName}&username=${username}`);
   }

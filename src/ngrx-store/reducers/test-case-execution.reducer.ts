@@ -5,11 +5,13 @@ import { TestCaseExecutionActions } from '../actions';
 export interface State {
   testSuiteDetails: any;
   testSuiteResults: any;
+  testScenarioResults: any;
 }
 
 export const initialState: State = {
   testSuiteDetails: [],
-  testSuiteResults: []
+  testSuiteResults: [],
+  testScenarioResults: []
 };
 
 export const reducer: ActionReducer<State> = (state = initialState, action: TestCaseExecutionActions) => {
@@ -22,6 +24,10 @@ export const reducer: ActionReducer<State> = (state = initialState, action: Test
       return Object.assign({}, state, { testSuiteResults: action.payload });
     }
 
+    case types.FETCH_TEST_SCENARIO_RESULTS_SUCCESS: {
+      return Object.assign({}, state, { testScenarioResults: action.payload });
+    }
+
     default:
       return state;
   }
@@ -29,3 +35,4 @@ export const reducer: ActionReducer<State> = (state = initialState, action: Test
 
 export const getTestSuiteDetailsState = (state: State) => state.testSuiteDetails;
 export const getTestSuiteResultsState = (state: State) => state.testSuiteResults;
+export const getTestScenarioResultsState = (state: State) => state.testScenarioResults;

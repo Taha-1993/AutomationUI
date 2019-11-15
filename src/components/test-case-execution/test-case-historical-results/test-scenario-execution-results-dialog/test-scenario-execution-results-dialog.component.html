@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>
+  <div class="mdl-grid pT0 pB0">
+    <div class="mdl-cell mdl-cell--12-col mT0 mL0 mB0">
+      <span style="font-size: 16px; font-weight: bold;">Test Scenario Exection Results</span>
+      <mat-icon class="fRight cursor-pointer mR5 mT5" title="Close" (click)="dialogRef.close()" style="float:right;">close</mat-icon>
+    </div>
+  </div>
+</h2>
+
+<mat-dialog-content>
+  <div class="mdl-grid">
+    <ag-grid-angular class="ag-theme-material border0 ag-custom" style="width: 100% !important; height: 500px"
+    [enableColResize]="true"
+    [columnDefs]="columnDefs"
+    [gridOptions]="gridOptions"
+    [rowData]="rowData"></ag-grid-angular>
+  </div>
+</mat-dialog-content>

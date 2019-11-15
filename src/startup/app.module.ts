@@ -32,7 +32,8 @@ import {
   MatDialogComponent,
   TestCaseExecutionComponent,
   TestCaseConsolidatedResultsComponent,
-  TestCaseHistoricalResultsComponent
+  TestCaseHistoricalResultsComponent,
+  TestScenarioExecutionResultsDialogComponent
 } from '../components';
 import {
   AppLoadService,
@@ -67,7 +68,8 @@ export function get_settings(appLoadService: AppLoadService) {
     HeaderComponent,
     TestCaseExecutionComponent,
     TestCaseConsolidatedResultsComponent,
-    TestCaseHistoricalResultsComponent
+    TestCaseHistoricalResultsComponent,
+    TestScenarioExecutionResultsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -126,7 +128,8 @@ export function get_settings(appLoadService: AppLoadService) {
     // ActionCellRenderComponent,
     AgGridMaterialSelectEditorComponent,
     AGGridMaterialCheckboxEditorComponent,
-    MatDialogComponent
+    MatDialogComponent,
+    TestScenarioExecutionResultsDialogComponent
   ],
   bootstrap: [AppComponent]
 })

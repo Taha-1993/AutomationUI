@@ -25,8 +25,22 @@ export class GetTestSuiteResultsSuccessAction implements Action {
   constructor (public payload: any) {}
 }
 
+export class GetTestScenarioResultsAction implements Action {
+  readonly type = types.FETCH_TEST_SCENARIO_RESULTS;
+
+  constructor (public payload: any) {}
+}
+
+export class GetTestScenarioResultsSuccessAction implements Action {
+  readonly type = types.FETCH_TEST_SCENARIO_RESULTS_SUCCESS;
+
+  constructor (public payload: any) {}
+}
+
 export type TestCaseExecutionActions
   = GetTestSuiteDetailsAction
   | GetTestSuiteDetailsSuccessAction
   | GetTestSuiteResultsAction
-  | GetTestSuiteResultsSuccessAction;
+  | GetTestSuiteResultsSuccessAction
+  | GetTestScenarioResultsAction
+  | GetTestScenarioResultsSuccessAction;

@@ -65,7 +65,7 @@ export const getExecutionColumnDefinition = () => {
     },
     {
       headerName: 'Run Time (HH:MM:SS)',
-      field: 'RunTime',
+      field: 'ExecutionRunTime',
       enableRowGroup: true,
       cellStyle: { 'text-align': 'center' }
     },

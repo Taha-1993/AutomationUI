@@ -1,38 +1,12 @@
 import { GridOptions, ColDef } from 'ag-grid';
-import { dateTimeFormatter } from '../../../utils';
+import { dateTimeFormatter } from '../../../../utils';
 
-export const getExecutionColumnDefinition = () => {
+export const getColumnDefinition = () => {
   const columnDefs: ColDef[] = [
     {
-      headerName: '',
-      field: '',
-      width: 1,
-      // pinned: 'left',
-      suppressMenu: true,
-      suppressSorting: true,
-      suppressSizeToFit: true,
-      cellStyle: { 'text-align': 'center' },
-      cellRenderer: params => {
-        return `<div class="grid-actions" style="margin-left: 5px; margin-top: 1px;">
-          <i class="material-icons cursor-pointer" title="View Scenarios" data-action-type="scenario-results">info</i>
-        </div>`;
-      }
-    },
-    {
-      headerName: 'Execution #',
-      field: 'ExecutionRunID',
-      cellStyle: { 'text-align': 'center' }
-    },
-    {
-      headerName: 'Project ID',
-      field: 'ProjectID',
+      headerName: 'Scenario Execution ID',
+      field: 'ScenarioExecutionID',
       hide: true,
-      cellStyle: { 'text-align': 'center' }
-    },
-    {
-      headerName: 'Project Name',
-      field: 'ProjectName',
-      enableRowGroup: true,
       cellStyle: { 'text-align': 'center' }
     },
     {
@@ -42,41 +16,34 @@ export const getExecutionColumnDefinition = () => {
       cellStyle: { 'text-align': 'center' }
     },
     {
-      headerName: 'Suite Type ID',
-      field: 'SuiteTypeID',
+      headerName: 'Scenario ID',
+      field: 'ScenarioID',
       hide: true,
       cellStyle: { 'text-align': 'center' }
     },
     {
-      headerName: 'Suite Type Name',
-      field: 'SuiteTypeName',
-      enableRowGroup: true,
-      cellStyle: { 'text-align': 'center' }
-    },
-    {
-      headerName: 'Suite Type Description',
-      field: 'SuiteTypeDescription',
-      hide: true,
-      cellStyle: { 'text-align': 'center' }
+      headerName: 'Scenario',
+      field: 'ScenarioName',
+      cellStyle: { 'text-align': 'left' }
     },
     {
       headerName: 'Execution Start Time',
       field: 'ExecutionStartTime',
-      enableRowGroup: true,
+      // enableRowGroup: true,
       cellRenderer: dateTimeFormatter,
       cellStyle: { 'text-align': 'center' }
     },
     {
       headerName: 'Execution End Time',
       field: 'ExecutionEndTime',
-      enableRowGroup: true,
+      // enableRowGroup: true,
       cellRenderer: dateTimeFormatter,
       cellStyle: { 'text-align': 'center' }
     },
     {
       headerName: 'Run Time (HH:MM:SS)',
       field: 'ExecutionRunTime',
-      enableRowGroup: true,
+      // enableRowGroup: true,
       cellStyle: { 'text-align': 'center' }
     },
     {
@@ -86,15 +53,15 @@ export const getExecutionColumnDefinition = () => {
       cellStyle: { 'text-align': 'center' }
     },
     {
-      headerName: 'Execution Status Description',
+      headerName: 'Execution Status',
       field: 'ExecutionStatusDescription',
-      enableRowGroup: true,
+      // enableRowGroup: true,
       cellStyle: { 'text-align': 'center' }
     },
     {
       headerName: 'Username',
       field: 'Username',
-      enableRowGroup: true,
+      // enableRowGroup: true,
       cellStyle: { 'text-align': 'center' }
     }
   ];
@@ -109,19 +76,19 @@ export const getGridOptions = (isEditor: boolean): GridOptions => {
     enableColResize: true,
     headerHeight: 55,
     rowSelection: 'single',
-    rowGroupPanelShow: 'always',
+    // rowGroupPanelShow: 'always',
     groupDefaultExpanded: -1,
-    columnTypes: {
-      dimension: {
-        enableRowGroup: true,
-        enablePivot: true
-      }
-    },
-    autoGroupColumnDef: {
-      headerName: ' ',
-      width: 130,
-      suppressMenu: true
-    },
+    // columnTypes: {
+    //   dimension: {
+    //     enableRowGroup: true,
+    //     enablePivot: true
+    //   }
+    // },
+    // autoGroupColumnDef: {
+    //   headerName: ' ',
+    //   width: 130,
+    //   suppressMenu: true
+    // },
     context: {
       isEditor: isEditor
     },
