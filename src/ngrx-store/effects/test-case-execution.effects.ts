@@ -14,36 +14,36 @@ export class TestCaseExecutionEffects {
 
   @Effect()
   getTestSuiteDetails$: Observable<Action> = this.actions$.pipe(
-  ofType(types.FETCH_TEST_SUITE_DETAILS),
-  debounceTime(1),
-  tap(() => this.store.dispatch(new actions.BeginAjaxCall())),
-  map((action: any) => action.payload),
-  switchMap((payload) => {
-    return this.testCaseExecutionService.getTestSuiteDetails(payload).pipe(
-      map(data => new actions.GetTestSuiteDetailsSuccessAction(data)));
+    ofType(types.FETCH_TEST_SUITE_DETAILS),
+    debounceTime(100),
+    tap(() => this.store.dispatch(new actions.BeginAjaxCall())),
+    map((action: any) => action.payload),
+    switchMap((payload) => {
+      return this.testCaseExecutionService.getTestSuiteDetails(payload).pipe(
+        map(data => new actions.GetTestSuiteDetailsSuccessAction(data)));
     })
   );
 
   @Effect()
   getTestSuiteResults$: Observable<Action> = this.actions$.pipe(
-  ofType(types.FETCH_TEST_SUITE_RESULTS),
-  debounceTime(1),
-  tap(() => this.store.dispatch(new actions.BeginAjaxCall())),
-  switchMap(() => {
-    return this.testCaseExecutionService.getTestSuiteResults().pipe(
-      map(data => new actions.GetTestSuiteResultsSuccessAction(data)));
+    ofType(types.FETCH_TEST_SUITE_RESULTS),
+    debounceTime(1),
+    tap(() => this.store.dispatch(new actions.BeginAjaxCall())),
+    switchMap(() => {
+      return this.testCaseExecutionService.getTestSuiteResults().pipe(
+        map(data => new actions.GetTestSuiteResultsSuccessAction(data)));
     })
   );
 
   @Effect()
   getTestScenarioResults$: Observable<Action> = this.actions$.pipe(
-  ofType(types.FETCH_TEST_SCENARIO_RESULTS),
-  debounceTime(1),
-  tap(() => this.store.dispatch(new actions.BeginAjaxCall())),
-  map((action: any) => action.payload),
-  switchMap((payload) => {
-    return this.testCaseExecutionService.getTestScenarioResults(payload).pipe(
-      map(data => new actions.GetTestScenarioResultsSuccessAction(data)));
+    ofType(types.FETCH_TEST_SCENARIO_RESULTS),
+    debounceTime(1),
+    tap(() => this.store.dispatch(new actions.BeginAjaxCall())),
+    map((action: any) => action.payload),
+    switchMap((payload) => {
+      return this.testCaseExecutionService.getTestScenarioResults(payload).pipe(
+        map(data => new actions.GetTestScenarioResultsSuccessAction(data)));
     })
   );
 

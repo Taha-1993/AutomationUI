@@ -24,6 +24,7 @@ export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy {
   columnDefs: Array<ColDef>;
   gridApi: GridApi;
   columnApi: ColumnApi;
+  username: string;
 
   constructor(private oktaAuth: OktaAuthService, private store: Store<reducers.State>, private executionService: ExecutionService) {
     this.ngUnsubscribe = new Subject<void>();
@@ -33,7 +34,8 @@ export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.oktaAuth.getUser().then(x => {
-      this.store.dispatch(new actions.GetTestSuiteDetailsAction(_.first(x.email.split('@'))));
+      this.username = _.first(x.email.split('@'));
+      this.store.dispatch(new actions.GetTestSuiteDetailsAction(this.username));
     });
 
     this.store.select(reducers.getTestSuiteDetailsState).pipe(takeUntil(this.ngUnsubscribe)).subscribe(x => {
@@ -68,10 +70,8 @@ export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy {
     if (e.event.target) {
       const actionType = e.event.target.getAttribute('data-action-type');
       if (actionType === 'execute') {
-        this.oktaAuth.getUser().then(x => {
-          this.executionService.executeTestSuite(e.data.ProjectName, e.data.SuiteTypeName, _.first(x.email.split('@')));
-          this.store.dispatch(new actions.GetTestSuiteDetailsAction(_.first(x.email.split('@'))));
-        });
+        this.executionService.executeTestSuite(e.data.ProjectName, e.data.SuiteTypeName, this.username).subscribe(z => console.log(z));
+        this.store.dispatch(new actions.GetTestSuiteDetailsAction(this.username));
       }
     }
   }
