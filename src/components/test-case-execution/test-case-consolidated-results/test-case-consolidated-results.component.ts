@@ -46,8 +46,15 @@ export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy, 
       this.checkBoxValueChanged.emit(this.isAnyChecked());
     });
 
-    // interval(10000).pipe(takeUntil(this.ngUnsubscribe)).subscribe(z => {});
-    this.oktaAuth.getUser().then(x => this.store.dispatch(new actions.GetTestSuiteDetailsAction(_.first(x.email.split('@')))));
+    this.store.select(reducers.getTestCaseExecutionResponseState).pipe(takeUntil(this.ngUnsubscribe)).subscribe(x => {
+      if (x) {
+        this.store.dispatch(new actions.GetTestSuiteDetailsAction(this.username));
+      }
+    });
+
+    // interval(10000).pipe(takeUntil(this.ngUnsubscribe)).subscribe(z => {
+    //   this.oktaAuth.getUser().then(x => this.store.dispatch(new actions.GetTestSuiteDetailsAction(_.first(x.email.split('@')))));
+    // });
   }
 
   ngAfterViewInit() {
@@ -76,7 +83,9 @@ export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy, 
     this.checkBoxValueChanged.emit(this.isAnyChecked());
   }
 
-  executeSuites() {}
+  executeSuites() {
+    this.store.dispatch(new actions.ExecuteTestSuiteAction(this.rowData.filter(x => x.IsChecked)));
+  }
 
   isAnyChecked() {
     return _.some(this.rowData, x => x.IsChecked);

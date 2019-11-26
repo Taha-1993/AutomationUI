@@ -33,6 +33,7 @@ export const getTestCaseExecutionState = (state: State) => state.reducer.testCas
 export const getAjaxCallsInProgress = createSelector(getAjaxState, ajaxStateReducer.getAjaxCallsInProgress);
 export const getErrorHandlerObjectState = createSelector(getErrorHandlerState, errorHandlerReducer.getErrorHandlerObjectState);
 
+export const getTestCaseExecutionResponseState = createSelector(getTestCaseExecutionState, testCaseExecutionReducer.getTestCaseExecutionResponseState);
 export const getTestSuiteDetailsState = createSelector(getTestCaseExecutionState, testCaseExecutionReducer.getTestSuiteDetailsState);
 export const getTestSuiteResultsState = createSelector(getTestCaseExecutionState, testCaseExecutionReducer.getTestSuiteResultsState);
 export const getTestScenarioResultsState = createSelector(getTestCaseExecutionState, testCaseExecutionReducer.getTestScenarioResultsState);

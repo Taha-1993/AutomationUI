@@ -25,7 +25,9 @@ export class TestCaseExecutionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngOnDestroy(): void { }
+  ngOnDestroy(): void {
+    this.executeButtonSubject.unsubscribe();
+  }
 
   onRefreshButtonClicked() {
     this.oktaAuth.getUser().then(x => {

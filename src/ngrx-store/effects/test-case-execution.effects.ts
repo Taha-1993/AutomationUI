@@ -47,6 +47,18 @@ export class TestCaseExecutionEffects {
     })
   );
 
+  @Effect()
+  executeTestSuite$: Observable<Action> = this.actions$.pipe(
+  ofType(types.EXECUTE_TEST_SUITE),
+  debounceTime(1),
+  tap(() => this.store.dispatch(new actions.BeginAjaxCall())),
+  map((action: any) => action.payload),
+  switchMap((payload) => {
+    return this.testCaseExecutionService.executeTestSuite(payload).pipe(
+      map(response => new actions.ExecuteTestSuiteSuccessAction(response)));
+    })
+  );
+
   constructor(
     private store: Store<reducers.State>,
     private actions$: Actions,

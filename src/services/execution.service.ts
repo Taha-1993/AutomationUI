@@ -21,7 +21,7 @@ export class ExecutionService {
     return this.http.get(`${Config.API}/TestCaseExecution/GetTestScenarioResults?suiteExecutionID=${suiteExecutionID}`);
   }
 
-  executeTestSuite(projectName: string, suiteName: string, username: string) {
-    return this.http.get(`${Config.API}/TestCaseExecution/ExecuteTestSuite?projectName=${projectName}&suiteName=${suiteName}&username=${username}`);
+  executeTestSuite(testSuiteList) {
+    return this.http.post(`${Config.API}/TestCaseExecution/ExecuteTestSuite`, JSON.stringify(testSuiteList));
   }
 }
