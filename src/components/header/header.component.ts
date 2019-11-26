@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
     public router: Router,
     private _ngZone: NgZone,
     private titleService: Title) {
-    this.applicationTitle = 'MAP';
+    this.applicationTitle = 'Web Automation Portal';
 
     if (Config.currentEnvironment) {
       this.currentEnvironment = ` (${Config.currentEnvironment})`;
