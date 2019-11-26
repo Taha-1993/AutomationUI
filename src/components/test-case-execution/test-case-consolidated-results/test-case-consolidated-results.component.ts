@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output, Input, AfterViewInit } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 import { Store } from '@ngrx/store';
 import { Subject, interval } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { GridApi, ColumnApi, GridReadyEvent, ColDef, GridOptions } from 'ag-grid';
+import { GridApi, ColumnApi, GridReadyEvent, ColDef, GridOptions, RowClickedEvent } from 'ag-grid';
 
 import * as _ from 'lodash';
 import * as reducers from '../../../ngrx-store/reducers';
@@ -17,7 +17,9 @@ import { ExecutionService } from '../../../services';
   selector: 'test-case-consolidated-results',
   templateUrl: './test-case-consolidated-results.component.html'
 })
-export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy {
+export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy, AfterViewInit {
+  @Output() checkBoxValueChanged: EventEmitter<boolean>;
+  @Input() executeButtonSubject: Subject<any>;
   ngUnsubscribe: Subject<void>;
   rowData: Array<any>;
   gridOptions: GridOptions;
@@ -27,6 +29,7 @@ export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy {
   username: string;
 
   constructor(private oktaAuth: OktaAuthService, private store: Store<reducers.State>, private executionService: ExecutionService) {
+    this.checkBoxValueChanged = new EventEmitter<boolean>();
     this.ngUnsubscribe = new Subject<void>();
     this.gridOptions = getGridOptions(true);
     this.columnDefs = getExecutionColumnDefinition();
@@ -40,18 +43,21 @@ export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy {
 
     this.store.select(reducers.getTestSuiteDetailsState).pipe(takeUntil(this.ngUnsubscribe)).subscribe(x => {
       this.rowData = x;
+      this.checkBoxValueChanged.emit(this.isAnyChecked());
     });
 
-    interval(10000).pipe(takeUntil(this.ngUnsubscribe)).subscribe(z => {
-      this.oktaAuth.getUser().then(x => {
-        this.store.dispatch(new actions.GetTestSuiteDetailsAction(_.first(x.email.split('@'))));
-      });
-    });
+    // interval(10000).pipe(takeUntil(this.ngUnsubscribe)).subscribe(z => {});
+    this.oktaAuth.getUser().then(x => this.store.dispatch(new actions.GetTestSuiteDetailsAction(_.first(x.email.split('@')))));
+  }
+
+  ngAfterViewInit() {
+    this.executeButtonSubject.subscribe(() => this.executeSuites());
   }
 
   ngOnDestroy(): void {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+    // this.executeButtonSubject.unsubscribe();
   }
 
   onGridReady(params: GridReadyEvent) {
@@ -66,14 +72,13 @@ export class TestCaseConsolidatedResultsComponent implements OnInit, OnDestroy {
     }
   }
 
-  onRowClicked(e) {
-    if (e.event.target) {
-      const actionType = e.event.target.getAttribute('data-action-type');
-      if (actionType === 'execute') {
-        this.executionService.executeTestSuite(e.data.ProjectName, e.data.SuiteTypeName, this.username).subscribe(z => console.log(z));
-        this.store.dispatch(new actions.GetTestSuiteDetailsAction(this.username));
-      }
-    }
+  onRowClicked(event: GridReadyEvent) {
+    this.checkBoxValueChanged.emit(this.isAnyChecked());
   }
 
+  executeSuites() {}
+
+  isAnyChecked() {
+    return _.some(this.rowData, x => x.IsChecked);
+  }
 }

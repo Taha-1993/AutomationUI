@@ -4,20 +4,31 @@ import { dateTimeFormatter } from '../../../utils';
 
 export const getExecutionColumnDefinition = () => {
   const columnDefs: ColDef[] = [
+    // {
+    //   headerName: '',
+    //   field: '',
+    //   width: 1,
+    //   // pinned: 'left',
+    //   suppressMenu: true,
+    //   suppressSorting: true,
+    //   suppressSizeToFit: true,
+    //   cellStyle: { 'text-align': 'center' },
+    //   cellRenderer: params => {
+    //     return `<div class="grid-actions" style="margin-left: 5px; margin-top: 1px;">
+    //       <i class="material-icons cursor-pointer" style="display: ${params.node.data && params.node.data.ExecutionStatusDescription !== 'In Progress' ? 'inline-block' : 'none'}" title="Execute" data-action-type="execute">play_arrow</i>
+    //     </div>`;
+    //   }
+    // },
     {
       headerName: '',
-      field: '',
-      width: 1,
+      field: 'IsChecked',
+      width: 30,
       // pinned: 'left',
       suppressMenu: true,
       suppressSorting: true,
       suppressSizeToFit: true,
-      cellStyle: { 'text-align': 'center' },
-      cellRenderer: params => {
-        return `<div class="grid-actions" style="margin-left: 5px; margin-top: 1px;">
-          <i class="material-icons cursor-pointer" style="display: ${params.node.data && params.node.data.ExecutionStatusDescription !== 'In Progress' ? 'inline-block' : 'none'}" title="Execute" data-action-type="execute">play_arrow</i>
-        </div>`;
-      }
+      cellRendererFramework: AGGridMaterialCheckboxEditorComponent,
+      cellStyle: { 'text-align': 'center' }
     },
     {
       headerName: 'Project ID',

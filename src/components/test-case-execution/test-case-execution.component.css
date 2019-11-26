@@ -1,0 +1,6 @@
+.execution-buttons {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  margin-left: 86.5%;
+}
