@@ -45,6 +45,7 @@ import {
 } from '../ngrx-store/effects';
 import { KeyValuePipe } from '../pipes/object-keys.pipe';
 import { AngularResizedEventModule } from 'angular-resize-event';
+import { ActionCellRenderComponent } from '../components/common/action-cellrender.component';
 
 LicenseManager.setLicenseKey(
   'Evaluation_License_Valid_Until__27_October_2018__MTU0MDU5NDgwMDAwMA==d47615e03f843a16f65fc1bbf9c7cb53'
@@ -65,6 +66,7 @@ export function get_settings(appLoadService: AppLoadService) {
     KeyValuePipe,
     ErrorPageComponent,
     AppComponent,
+    ActionCellRenderComponent,
     HeaderComponent,
     TestCaseExecutionComponent,
     TestCaseConsolidatedResultsComponent,
@@ -87,7 +89,7 @@ export function get_settings(appLoadService: AppLoadService) {
       TestCaseExecutionEffects
     ]),
     AgGridModule.withComponents([
-      // ActionCellRenderComponent,
+      ActionCellRenderComponent,
       AgGridMaterialSelectEditorComponent,
       AGGridMaterialCheckboxEditorComponent
     ])
@@ -125,7 +127,7 @@ export function get_settings(appLoadService: AppLoadService) {
     KeyValuePipe
   ],
   entryComponents: [
-    // ActionCellRenderComponent,
+    ActionCellRenderComponent,
     AgGridMaterialSelectEditorComponent,
     AGGridMaterialCheckboxEditorComponent,
     MatDialogComponent,
