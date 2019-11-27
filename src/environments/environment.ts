@@ -8,7 +8,7 @@ export const environment = {
   production: true,
   API: API,
   currentEnvironment: null,
-  applicationName: 'Verdict Insight Platform',
+  applicationName: 'Web Automation Portal',
   issuer: 'https://dev-805228.oktapreview.com/oauth2/default',
   redirectUri: 'http://localhost:4200/implicit/callback',
   clientId: '0oafklmzylGieQ8S10h7'
