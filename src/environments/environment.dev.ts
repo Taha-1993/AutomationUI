@@ -10,6 +10,6 @@ export const environment = {
   applicationName: 'Web Automation Portal',
   currentEnvironment: null,
   issuer: 'https://dev-805228.oktapreview.com/oauth2/default',
-  redirectUri: 'https:/apps-dev.transre.com/QAAutomation/implicit/callback',
+  redirectUri: 'https://apps-dev.transre.com/QAAutomation/implicit/callback',
   clientId: '0oag8mp1lbHnbTpfX0h7'
 };
