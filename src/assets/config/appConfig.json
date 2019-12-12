@@ -2,7 +2,7 @@
   "production": false,
   "applicationName":"Web Automation Portal",
   "currentEnvironment": "Dev",
-  "API": "http://devwow06/AutomationAPI/api",
+  "API": "http://localhost/AutomationAPI/api",
   "OktaIssuer": "https://dev-805228.oktapreview.com/oauth2/default",
   "OktaRedirectUri": "http://localhost:4200/implicit/callback",
   "OktaClientId": "0oafklmzylGieQ8S10h7"
