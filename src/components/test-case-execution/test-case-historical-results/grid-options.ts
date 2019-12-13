@@ -13,6 +13,7 @@ export const getExecutionColumnDefinition = () => {
       suppressSizeToFit: true,
       cellStyle: { 'text-align': 'center' },
       cellRenderer: params => {
+        if (params.node.group) { return ''; }
         return `<div class="grid-actions" style="margin-left: 5px; margin-top: 1px;">
           <i class="material-icons cursor-pointer" title="View Scenarios" data-action-type="scenario-results">info</i>
         </div>`;
@@ -96,6 +97,18 @@ export const getExecutionColumnDefinition = () => {
       field: 'Username',
       enableRowGroup: true,
       cellStyle: { 'text-align': 'center' }
+    },
+    {
+      headerName: 'Report',
+      field: '',
+      enableRowGroup: false,
+      cellStyle: { 'text-align': 'center' },
+      cellRenderer: params => {
+        if (params.node.group) { return ''; }
+        return `<div>
+          <a class="cursor-pointer" title="Opens Protractor Report" data-action-type="view-report">View Report</a>
+        </div>`;
+      }
     }
   ];
 

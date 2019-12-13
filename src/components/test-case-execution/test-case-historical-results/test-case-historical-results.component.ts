@@ -10,6 +10,8 @@ import * as reducers from '../../../ngrx-store/reducers';
 import * as actions from '../../../ngrx-store/actions';
 import { getExecutionColumnDefinition, getGridOptions } from './grid-options';
 import { TestScenarioExecutionResultsDialogComponent } from './test-scenario-execution-results-dialog/test-scenario-execution-results-dialog.component';
+import { ExecutionService } from '../../../services';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -24,7 +26,8 @@ export class TestCaseHistoricalResultsComponent implements OnInit, OnDestroy {
   gridApi: GridApi;
   columnApi: ColumnApi;
 
-  constructor(private store: Store<reducers.State>, public testScenarioExecutionResultsDialog: MatDialog) {
+  constructor(private store: Store<reducers.State>, public testScenarioExecutionResultsDialog: MatDialog,
+    private executionService: ExecutionService, private http: HttpClient) {
     this.ngUnsubscribe = new Subject<void>();
     this.gridOptions = getGridOptions(true);
     this.columnDefs = getExecutionColumnDefinition();
@@ -60,6 +63,14 @@ export class TestCaseHistoricalResultsComponent implements OnInit, OnDestroy {
       const actionType = e.event.target.getAttribute('data-action-type');
       if (actionType === 'scenario-results') {
         this.openTestScenarioExecutionResultsDialog(e.data.SuiteExecutionID);
+      } else if (actionType === 'view-report') {
+        this.store.dispatch(new actions.BeginAjaxCall());
+        this.executionService.exportTestReport(e.data.FilePath).subscribe(x => {
+          this.store.dispatch(new actions.AjaxCallError());
+          if (x) {
+            window.open().document.write(x);
+          }
+        });
       }
     }
   }

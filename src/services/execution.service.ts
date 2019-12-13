@@ -24,4 +24,8 @@ export class ExecutionService {
   executeTestSuite(testSuiteList) {
     return this.http.post(`${Config.API}/TestCaseExecution/ExecuteTestSuite`, JSON.stringify(testSuiteList));
   }
+
+  exportTestReport(filePath: string): Observable<any> {
+    return this.http.get(`${Config.API}/TestCaseExecution/ExportTestReport?filePath=${filePath}`, { responseType: 'text' });
+  }
 }
