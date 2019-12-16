@@ -61,21 +61,21 @@ export const getExecutionColumnDefinition = () => {
       cellStyle: { 'text-align': 'center' }
     },
     {
-      headerName: 'Execution Start Time',
+      headerName: 'Start Time',
       field: 'ExecutionStartTime',
       enableRowGroup: true,
       cellRenderer: dateTimeFormatter,
       cellStyle: { 'text-align': 'center' }
     },
     {
-      headerName: 'Execution End Time',
+      headerName: 'End Time',
       field: 'ExecutionEndTime',
       enableRowGroup: true,
       cellRenderer: dateTimeFormatter,
       cellStyle: { 'text-align': 'center' }
     },
     {
-      headerName: 'Run Time (HH:MM:SS)',
+      headerName: 'Run Time',
       field: 'ExecutionRunTime',
       enableRowGroup: true,
       cellStyle: { 'text-align': 'center' }
@@ -87,7 +87,7 @@ export const getExecutionColumnDefinition = () => {
       cellStyle: { 'text-align': 'center' }
     },
     {
-      headerName: 'Execution Status Description',
+      headerName: 'Execution Status',
       field: 'ExecutionStatusDescription',
       enableRowGroup: true,
       cellStyle: { 'text-align': 'center' }
